@@ -7,7 +7,7 @@ DECIMAL = 1
 stocks = ["IBULHSGFIN", "SBIN", "DLF", "TATASTEEL", "JINDALSTEL", "BANDHANBNK", "PFC", "APOLLOTYRE", "CADILAHC", "M%26MFIN", "TATAMOTORS"]
 percent_from_strike = 0.15
 
-with open('stocks.csv', mode='w') as file:
+with open('trades.csv', mode='w') as file:
         file.write("\n")
 
 for s in stocks:
@@ -51,13 +51,13 @@ for s in stocks:
     call_relevant['AvgPrice'] = (call_relevant["BidPrice"] + call_relevant["AskPrice"])/2
     call_relevant2 = call_relevant.iloc[:, [2, 3]].round(DECIMAL)
 
-    with open('stocks.csv', mode='a') as file:
+    with open('trades.csv', mode='a') as file:
         file.write("{}\n".format(s))
     put_relevant2.to_csv('stocks.csv', mode='a', index=False)
-    with open('stocks.csv', mode='a') as file:
+    with open('trades.csv', mode='a') as file:
         file.write("{},-,-,-,-,-,-,-,-,CURRENT PRICE\n".format(curr_price))
     call_relevant2.to_csv('stocks.csv', mode='a', index=False, header=False)
-    with open('stocks.csv', mode='a') as file:
+    with open('trades.csv', mode='a') as file:
         file.write("\n")
         file.write("\n")
         file.write("\n")
